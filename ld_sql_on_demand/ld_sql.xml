@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_ld_sql_form" model="ir.ui.view">
+        <field name="name">ld.on.demand.sql</field>
+        <field name="model">ld.on.demand.sql</field>
+        <field name="arch" type="xml">
+            <form string="LD On Demand SQL">
+                <header>
+                    <button name="run_py_code" string="Run" type="object"
+                            class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="code" widget="ace" options="{'mode': 'python'}" placeholder="Enter Python code here. Help about Python expression is available in the help tab of this document."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ld_sql_tree" model="ir.ui.view">
+        <field name="name">LD On Demand Sql</field>
+        <field name="model">ld.on.demand.sql</field>
+        <field name="arch" type="xml">
+            <tree default_order="create_date desc">
+                <field name="create_date" string="SQL Created on"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_ld_sql" model="ir.actions.act_window">
+        <field name="name">On Demand SQL</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ld.on.demand.sql</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_ld_sql_main" name="On Demand SQL" parent="base.menu_custom"/>
+
+    <menuitem action="action_ld_sql" id="menu_ld_sql" name="Execute SQL"
+              parent="menu_ld_sql_main"/>
+
+</odoo>
