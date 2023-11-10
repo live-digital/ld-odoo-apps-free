@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="assets_frontend" name="website assets"
+			inherit_id="web.frontend_layout">
+			<xpath expr="//link" position="after">
+				<script src="/password_restrict_ldtech/static/src/js/custom.js" type="text/javascript"></script>
+			</xpath>
+		</template>
+
+		<template id="inherit_auth_signup" name="Sign up" inherit_id="auth_signup.fields">
+			<xpath expr="//div[hasclass('field-password')]" position="after">
+				<div class="alert alert-danger small pt-2 pb-2">
+					Password must be 8 characters or more.
+					<br/>
+					Must contain the following:
+					<br/>
+					* atleast 1 Numeric number
+					<br/>
+					* atleast 1 Alphabatic letter
+				</div>
+			</xpath>
+		</template>
+	</data>
+</odoo>
